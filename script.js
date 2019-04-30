@@ -1,5 +1,6 @@
 function showTime(){
 
+/** Get the new date by hours, minutes and seconds */
     let date = new Date();
     let hours = date.getHours();
     let minutes = date.getMinutes();
@@ -13,11 +14,13 @@ function showTime(){
     minutes = addZero(minutes);
     seconds = addZero(seconds);
 
+/** Insert the values into HTML */
     document.getElementById('clock').innerHTML = `${hours} : ${minutes} : ${seconds} ${formatHours}`;
 
 
 }
 
+/** If time less than 12 o`clock=> AM, otherwise PM */
 function convertFormat(time){
 
     let format = 'AM'
@@ -28,6 +31,7 @@ function convertFormat(time){
     return format;
 }
 
+/** after 12 o`clock time turns back to zero */
 function checkTime(time){
     if(time > 12){
         time = time - 12;
@@ -38,6 +42,7 @@ function checkTime(time){
     return time;
 }
 
+/** add zero, when time less than 10 o`clock */
 function addZero(time){
     if(time < 10){
         time = "0" + time;
@@ -48,5 +53,6 @@ function addZero(time){
     }
 }
 
+/** refresh time in every 1 second */
 showTime()
 setInterval(showTime, 1000)
